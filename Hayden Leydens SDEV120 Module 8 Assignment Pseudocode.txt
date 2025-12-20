@@ -1,0 +1,63 @@
+Declarations
+    File Geraldines Businesses.csv
+    File Geralds Businesses.csv
+    File mergedFile
+    Record file1
+    Record file2
+    boolean endFile1 = false
+    boolean endFile2 = false
+
+open Geraldines Businesses.csv
+open Geralds Businesses.csv
+open mergedFile
+
+read geraldineFile into file1
+if end of Geraldines Businesses.csv then
+    endFile1 = true
+end if
+
+read gerardFile into file2
+if end of Geralds Businesses.csv then
+    endFile2 = true
+end if
+
+
+while endFile1 = false AND endFile2 = false
+    if file1.customerNumber < file2.customerNumber then
+        write file1 to mergedFile
+        read Geraldines Businesses.csv into file1
+        if end of Geraldines Businesses.csv then
+            endFile1 = true
+        end if
+    else
+        write file2 to mergedFile
+        read Geralds Businesses.csv into file2
+        if end of Geralds Businesses.csv then
+            endFile2 = true
+        end if
+    end if
+end while
+
+
+while endFile1 = false
+    write file1 to mergedFile
+    read open Geraldines Businesses.csv into file1
+    if end of open Geraldines Businesses.csv then
+        endFile1 = true
+    end if
+end while
+
+
+while endFile2 = false
+    write file2 to mergedFile
+    read Geralds Businesses.csv into g2
+    if end of Geralds Businesses.csv then
+        endFile2 = true
+    end if
+end while
+
+
+close Geraldines Businesses.csv
+close Geralds Businesses.csv
+close mergedFile
+
